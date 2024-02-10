@@ -1,0 +1,95 @@
+package com.company;
+import  java.util.Scanner;
+class LibraryManagementSystem{
+    String[] books=new String[100];//all the global variables need to be declared at first itself. so as to use them in every function/method.
+    int noOfBooks=0;
+    Scanner sc=new Scanner(System.in);
+    void addBook(String book){
+        books[noOfBooks]=book;
+        noOfBooks++;//at oth index 1 book added. so quantity became 1. Likewise noOfBooks will be always +1 than array's last index.
+        System.out.println("\""+book+"\""+ "Book has been added Successfully in Library.");
+    }
+    void showAvailableBooks(){
+        System.out.println("--------------------------");
+        System.out.println();
+        System.out.println("The available books are:");
+        for(int i=0;i<books.length;i++){//else we can use i<noOfBooks.
+            if(books[i]==null){
+                continue;
+            }
+            System.out.println("*"+books[i]);
+        }
+        int sum=0;
+        for(int i=0;i<books.length;i++){//else we can use i<noOfBooks.
+            if(books[i]==null){//in array "books" 1st element starts from index 0. so start for loop for arrays always from zero.
+                continue;
+            }sum=sum+1;
+        }
+        System.out.println("Total books present in Library is: "+sum);
+    }
+    void issueBook(){
+        System.out.println("--------------------------");
+        System.out.println();
+//        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter the book name:");
+        String bookName=sc.nextLine();
+        for(int i=0;i<noOfBooks;i++){
+            if(bookName.equalsIgnoreCase(books[i])){
+                books[i]=null;
+                System.out.println(bookName+" This book is available & issued.");
+                return;//this is very important. if we want rest of the lines not execute only if this condition meets then "return" keyword is used.
+            }
+        }
+            System.out.println("book is not available! will be added soon in Library. Please visit again :)");
+
+        }
+
+    void returnBook(){
+        System.out.println("--------------------------");
+        System.out.println();
+//        Scanner sc=new Scanner(System.in);
+        System.out.print("enter returning book name:");
+        String returnBookName=sc.nextLine();
+        addBook(returnBookName);//a method can be called in another method. since both methods are present in same class.
+        System.out.println("Book has been returned successfully.");
+
+            }
+        }
+
+
+
+
+public class Library_Management_System {
+    public static void main(String[] args) {
+        /*
+        Create a Library management system which is capable of issuing books to students
+        Book should have info like:
+        1. Book name
+        2. Book Author
+        3. Issued to
+        4. Issued on
+        user should be able to add books,return issued books,issue books
+        Assume that all the users are registered with their names in the central database.
+        */
+
+        LibraryManagementSystem lib=new LibraryManagementSystem();
+        lib.addBook("three men in a boat");
+        lib.addBook("The story of an young girl");
+        lib.addBook("the lion King");
+        lib.addBook("bhagvadGita");
+        lib.addBook("MaharaBharata");
+        lib.addBook("ramayana");
+        lib.addBook("Rise of Bharat");
+
+        lib.showAvailableBooks();
+
+        lib.issueBook();
+
+        lib.showAvailableBooks();
+
+        lib.returnBook();
+
+        lib.showAvailableBooks();
+
+    }
+}
