@@ -1,0 +1,44 @@
+package com.company;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Rock_Paper_Scissors {
+    public static void main(String[] args){
+        System.out.println("Welcome to Rock paper scissors game :)");
+        System.out.println("The following Instructions for User:");
+        System.out.println(" 1]0 for Rock \n 2]1 for paper \n 3]2 for Scissors");
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Player's Input: ");
+        int UserInput=sc.nextInt();
+
+        Random rnd=new Random();//syntax for creating Random Object
+        int CompInput=rnd.nextInt(3);
+
+
+        if(UserInput==0)
+        {System.out.println("Player's choice is Rock");}
+        else if(UserInput==1)
+        {System.out.println("Player's Choice is paper");}
+        else if(UserInput==2)
+        {System.out.println("Player's choice is Scissors");}
+        else if (UserInput>2)
+        {System.out.println("Goodbye");return;}
+        else {System.out.println("Please enter a valid input ");return;}
+
+        switch(CompInput)
+        {case 0:
+                System.out.println("Computer's choice is rock.");break;
+                case 1:
+                    System.out.println("Computer's choice is Paper.");break;
+            case 2:
+                System.out.println("Computer's choice is Scissors.");break;}
+
+        if (CompInput==UserInput)
+        {System.out.println("It's a DRAW.");}
+        else if(CompInput==0 && UserInput==2 || CompInput==1 && UserInput==0 || CompInput==2 && UserInput==1)
+        {System.out.println("Sorry!! You lost.. YOUR Computer Won this Time.");}
+        else{System.out.println("Dear PLayer You won This time.");}
+        System.out.println(" if Enjoyed>>>Please Give us 5 Stars");
+
+}
+}
