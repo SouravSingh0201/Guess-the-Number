@@ -1,0 +1,47 @@
+package com.company;
+import java.util.Scanner;
+import java.util.Random;
+class Game{
+    public int compNumber;
+    public int userNumber;
+    public int noOfGuesses=0;
+    public void setNoOfGuesses(int noOfGuesses) {
+        this.noOfGuesses = noOfGuesses;}
+    public int getNoOfGuesses(){
+        return noOfGuesses;}
+    Game(){
+        Random rand=new Random();
+        this.compNumber=rand.nextInt(101);}
+    void takeUserInput(){
+        Scanner sc=new Scanner(System.in);
+        System.out.print(" Guess your Number :) \nuserInput: ");
+        this.userNumber=sc.nextInt();}
+    boolean isCorrectNumber() {
+        ++noOfGuesses;
+        if (userNumber == compNumber) {
+            System.out.printf("Yes you Guessed it Right! the Random number was %d \n and number of guesses taken were %d.", compNumber, noOfGuesses);
+            return true;}
+        else if (userNumber < compNumber) {
+            System.out.println("Too Low.......");
+        return false;}
+        else if (userNumber > compNumber) {
+            System.out.println("Too High......");}
+
+            return false;
+    }}
+
+public class Guess_TheNumber {
+    public static void main(String[] args) {
+        Game g=new Game();//this object creation line automatically takes a random number.As we used Random class in the constructor.
+        boolean b=false;
+        while(!b){
+            g.takeUserInput();
+            b=g.isCorrectNumber();}//as the loop specifies. not b means not false.the iterations keeps repeating as false(s) keep
+        //occuring and terminates only when true is encountered.as the loop iterates, user is allowed to input the number(since we
+        // used takeUserInput() function inside the loop.) if userInput=compInput is found then we get true and loop terminates.
+        //remaining all cases is considered as false and again loop is iterated.
+
+
+    }
+}
+
